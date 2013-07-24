@@ -13,7 +13,6 @@ Vagrant.configure("2") do |config|
 
     chef.add_recipe 'apt'
     chef.add_recipe 'postgresql'
-    chef.add_recipe 'tomcat'
     chef.add_recipe 'grails'
   end
 
