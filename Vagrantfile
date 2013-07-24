@@ -6,14 +6,24 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu-12.04-omnibus-chef"
   config.vm.box_url = "http://grahamc.com/vagrant/ubuntu-12.04-omnibus-chef.box"
 
-  config.vm.network :forwarded_port, guest: 5432, host: 15432
-  config.vm.network :forwarded_port, guest: 8080, host: 18080
+  config.vm.define :app do |app|
+    app.vm.network :private_network, ip: "192.168.50.1"
 
-  config.vm.provision :chef_solo do |chef|
-
-    chef.add_recipe 'apt'
-    chef.add_recipe 'postgresql'
-    chef.add_recipe 'grails'
+    app.vm.provision :chef_solo do |chef|
+      chef.add_recipe 'apt'
+      chef.add_recipe 'postgresql'
+      chef.add_recipe 'grails'
+    end
   end
 
+  config.vm.define :jenkins do |jenkins|
+    jenkins.vm.network :private_network, ip: "192.168.50.2"
+
+    jenkins.vm.provision :chef_solo do |chef|
+      chef.add_recipe 'apt'
+      chef.add_recipe 'postgresql'
+      chef.add_recipe 'jenkins::server'
+
+    end
+  end
 end
