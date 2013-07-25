@@ -13,6 +13,16 @@ Vagrant.configure("2") do |config|
       chef.add_recipe 'apt'
       chef.add_recipe 'postgresql'
       chef.add_recipe 'grails'
+      chef.add_recipe 'bookshop::ci'
+
+      chef.json = {
+        "jenkins" => {
+          "server" => {
+            "url" => "http://192.168.50.2:8080"
+          }
+        }
+      }
+
     end
   end
 
@@ -23,7 +33,7 @@ Vagrant.configure("2") do |config|
       chef.add_recipe 'apt'
       chef.add_recipe 'postgresql'
       chef.add_recipe 'jenkins::server'
-
     end
   end
+
 end
