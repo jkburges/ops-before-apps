@@ -1,10 +1,10 @@
-# CHANGELOG for bookshop
+# CHANGELOG for not-another-bookshop
 
-This file is used to list changes made in each version of bookshop.
+This file is used to list changes made in each version of not-another-bookshop.
 
 ## 0.1.0:
 
-* Initial release of bookshop
+* Initial release of not-another-bookshop
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
