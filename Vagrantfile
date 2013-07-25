@@ -35,6 +35,8 @@ Vagrant.configure("2") do |config|
         }
       }
 
+      chef.log_level = :debug
+
     end
   end
 
