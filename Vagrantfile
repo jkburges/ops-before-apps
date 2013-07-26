@@ -15,6 +15,17 @@ Vagrant.configure("2") do |config|
       chef.add_recipe 'grails'
       chef.add_recipe 'postgresql'
       chef.add_recipe 'jenkins::server'
+      chef.json = {
+        "jenkins" => {
+          "server" => {
+            "url" => "http://192.168.50.2:8080"
+          }
+        },
+        "apt" => {
+          "cacher_ipaddress" => "aptcacher.emii.org.au"
+        }
+      }
+
     end
   end
 
@@ -32,6 +43,9 @@ Vagrant.configure("2") do |config|
           "server" => {
             "url" => "http://192.168.50.2:8080"
           }
+        },
+        "apt" => {
+          "cacher_ipaddress" => "aptcacher.emii.org.au"
         }
       }
 
