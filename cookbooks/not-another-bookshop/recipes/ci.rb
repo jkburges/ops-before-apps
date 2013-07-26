@@ -1,6 +1,7 @@
 #
 # Continuous integration config for our app.
 #
+include_recipe 'java'
 
 # TODO: check jenkins is ready at the beginning
 # TODO: only install plugin that aren't already installed

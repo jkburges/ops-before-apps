@@ -9,14 +9,13 @@ Vagrant.configure("2") do |config|
   jenkins_address = "192.168.50.2"
 
   config.vm.define :jenkins do |jenkins|
-    jenkins.vm.network :private_network, ip: "jenkins_address"
+    jenkins.vm.network :private_network, ip: jenkins_address
 
     jenkins.vm.provision :chef_solo do |chef|
       chef.add_recipe 'apt'
-      chef.add_recipe 'git'
-      chef.add_recipe 'grails'
-      chef.add_recipe 'postgresql'
       chef.add_recipe 'jenkins::server'
+      chef.add_recipe 'not-another-bookshop::build_tools'
+
       chef.json = {
         "jenkins" => {
           "server" => {
@@ -36,10 +35,9 @@ Vagrant.configure("2") do |config|
 
     app.vm.provision :chef_solo do |chef|
       chef.add_recipe 'apt'
-      chef.add_recipe 'postgresql'
-      chef.add_recipe 'grails'
       chef.add_recipe 'not-another-bookshop::ci'
-
+      chef.add_recipe 'not-another-bookshop::build_tools'
+ 
       chef.json = {
         "jenkins" => {
           "server" => {
