@@ -35,9 +35,10 @@ Vagrant.configure("2") do |config|
 
     app.vm.provision :chef_solo do |chef|
       chef.add_recipe 'apt'
-      chef.add_recipe 'not-another-bookshop::ci'
+#      chef.add_recipe 'not-another-bookshop::ci'
       chef.add_recipe 'not-another-bookshop::build_tools'
- 
+      chef.add_recipe 'not-another-bookshop::deploy'
+
       chef.json = {
         "jenkins" => {
           "server" => {

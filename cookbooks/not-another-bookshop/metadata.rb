@@ -6,7 +6,6 @@ description      'Installs/Configures bookshop'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
-%w{ jenkins java git grails }.each do |cb|
+%w{ jenkins java git grails application application_java }.each do |cb|
   depends cb
 end
-
