@@ -16,3 +16,8 @@ directory node['tomcat']['base'] do
   owner node['tomcat']['user']
   group node['tomcat']['group']
 end
+
+# Remove ROOT.xml or else we get exceptions in the log.
+file "#{node['tomcat']['config_dir']}/Catalina/localhost/ROOT.xml" do
+  action :delete
+end
