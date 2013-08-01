@@ -4,11 +4,28 @@
 include_recipe 'java'
 
 # TODO: check jenkins is ready at the beginning
-# TODO: only install plugin that aren't already installed
+
+# Only install plugins that aren't already installed.
+installed_plugins = []
+installed_plugins_check = jenkins_cli "list-plugins" do
+  block do |stdout|
+    stdout.each_line do |line|
+      installed_plugins << line.split(' ')[0]
+    end
+  end
+  action :nothing
+end
+
+installed_plugins_check.run_action(:run)
 
 %w{ git grails }.each do |plugin|
-  jenkins_cli "install-plugin #{plugin}"   # TODO: sometimes this times out - why?
-  jenkins_cli 'safe-restart'
+  jenkins_cli "install-plugin #{plugin}" do   # TODO: sometimes this times out because jenkins hasn't initialised itself properly from update centre.
+    not_if { installed_plugins.include? plugin }
+  end
+
+  jenkins_cli 'safe-restart' do
+    not_if { installed_plugins.include? plugin }
+  end
 
   # Make sure the server has properly restarted (from above plugin installation).
   # TODO: cut and paste from https://github.com/opscode-cookbooks/jenkins/blob/master/recipes/server.rb
@@ -40,6 +57,7 @@ cookbook_file job_config do
 end
 
 jenkins_job job_name do
-  action :nothing
+  action action
   config job_config
+  action :nothing
 end

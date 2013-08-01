@@ -1,5 +1,7 @@
 include_recipe 'application'
 
+# TODO: check that job has built.
+
 application 'not-another-bookshop' do
   path '/usr/local/not-another-bookshop'
   owner node['tomcat']['user']
