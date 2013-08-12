@@ -21,9 +21,6 @@ Vagrant.configure("2") do |config|
           "server" => {
             "url" => "http://#{jenkins_address}:8080"
           }
-        },
-        "apt" => {
-          "cacher_ipaddress" => "aptcacher.emii.org.au"
         }
       }
     end
@@ -41,9 +38,6 @@ Vagrant.configure("2") do |config|
           "server" => {
             "url" => "http://#{jenkins_address}:8080"
           }
-        },
-        "apt" => {
-          "cacher_ipaddress" => "aptcacher.emii.org.au"
         }
       }
     end
@@ -61,9 +55,6 @@ Vagrant.configure("2") do |config|
           "server" => {
             "url" => "http://#{jenkins_address}:8080"
           }
-        },
-        "apt" => {
-          "cacher_ipaddress" => "aptcacher.emii.org.au"
         }
       }
     end
