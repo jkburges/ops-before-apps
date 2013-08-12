@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu-12.04-omnibus-chef"
   config.vm.box_url = "http://grahamc.com/vagrant/ubuntu-12.04-omnibus-chef.box"
 
-  jenkins_address = "192.168.50.1"
+  jenkins_address = "192.168.50.4"
 
   config.vm.define :jenkins do |jenkins|
     jenkins.vm.network :private_network, ip: jenkins_address
