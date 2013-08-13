@@ -28,21 +28,10 @@ installed_plugins_check.run_action(:run)
   end
 
   # Make sure the server has properly restarted (from above plugin installation).
-  # TODO: cut and paste from https://github.com/opscode-cookbooks/jenkins/blob/master/recipes/server.rb
-  # Is there a way to re-use the code from there?  (Cannot simply include_recipe "jenkins::server", as
-  # that results in the jenkins server ending up on the app VM).
-  # TODO: refactor
-  ruby_block "block_until_api_operational" do
-
-    block do
-      test_url = URI.parse("#{node['jenkins']['server']['url']}/api/json")
-      Chef::Log.info "Waiting until the Jenkins API is responding (url: #{test_url})"
-      until JenkinsHelper.endpoint_responding?(test_url) do
-        sleep 1
-        Chef::Log.debug(".")
-      end
-    end
+  block_until_api_operational "json api" do
+    url "#{node['jenkins']['server']['url']}/api/json"
   end
+
 end
 
 
@@ -61,3 +50,8 @@ jenkins_job job_name do
   config job_config
   action :nothing
 end
+
+block_until_api_operational "app job built" do
+  url "#{node['jenkins']['server']['url']}/job/not-another-bookshop/lastSuccessfulBuild/artifact/target/not-another-bookshop-0.1.war"
+end
+
