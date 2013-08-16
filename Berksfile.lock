@@ -1,4 +1,72 @@
-cookbook 'apt', :locked_version => '2.0.0'
-cookbook 'postgresql', :locked_version => '3.0.2'
-cookbook 'build-essential', :locked_version => '1.4.0'
-cookbook 'openssl', :locked_version => '1.0.2'
+{
+  "sources": {
+    "apt": {
+      "locked_version": "2.0.0"
+    },
+    "not-another-bookshop": {
+      "path": "./cookbooks/not-another-bookshop"
+    },
+    "grails": {
+      "locked_version": "0.1.0",
+      "git": "git://github.com/aodn/cookbooks.git",
+      "ref": "cf4828fee85f4333387ae677a321739740daa355",
+      "rel": "grails"
+    },
+    "jenkins": {
+      "locked_version": "0.8.0",
+      "git": "git://github.com/opscode-cookbooks/jenkins.git",
+      "ref": "0ff2a4e20e5ca0646a112b3bc11c22af87a9f3ad"
+    },
+    "postgresql": {
+      "locked_version": "3.0.2"
+    },
+    "java": {
+      "locked_version": "1.12.0"
+    },
+    "windows": {
+      "locked_version": "1.10.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "git": {
+      "locked_version": "2.5.2"
+    },
+    "dmg": {
+      "locked_version": "1.1.0"
+    },
+    "build-essential": {
+      "locked_version": "1.4.0"
+    },
+    "yum": {
+      "locked_version": "2.3.0"
+    },
+    "runit": {
+      "locked_version": "1.1.6"
+    },
+    "application": {
+      "locked_version": "3.0.0"
+    },
+    "application_java": {
+      "locked_version": "2.0.0"
+    },
+    "tomcat": {
+      "locked_version": "0.14.2"
+    },
+    "openssl": {
+      "locked_version": "1.0.2"
+    },
+    "apache2": {
+      "locked_version": "1.6.6"
+    },
+    "nginx": {
+      "locked_version": "1.7.0"
+    },
+    "ohai": {
+      "locked_version": "1.1.10"
+    },
+    "iptables": {
+      "locked_version": "0.12.0"
+    }
+  }
+}
