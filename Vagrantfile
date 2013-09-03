@@ -23,6 +23,10 @@ Vagrant.configure("2") do |config|
             "server" => {
               "url" => "http://#{params[:jenkins_address]}:8080"
             }
+          },
+          "grails" => {
+            "versions" => ['1.3.7'],
+            "default_version" => '1.3.7'
           }
         }
       end

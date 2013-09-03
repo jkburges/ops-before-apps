@@ -7,9 +7,9 @@
       "path": "./cookbooks/not-another-bookshop"
     },
     "grails": {
-      "locked_version": "0.1.0",
+      "locked_version": "0.1.1",
       "git": "git://github.com/aodn/cookbooks.git",
-      "ref": "cf4828fee85f4333387ae677a321739740daa355",
+      "ref": "cbeeb797e9df2488099f5bfa124e0a6300bebfa4",
       "rel": "grails"
     },
     "jenkins": {
